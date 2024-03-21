@@ -14,7 +14,9 @@ namespace DataAccessLayer.Concrete.Repositories
         }
         public void Delete(T p)
         {
-           _object.Remove(p);
+            var deletedEntity=c.Entry(p);
+            deletedEntity.State = EntityState.Deleted;
+         //  _object.Remove(p);
             c.SaveChanges();
         }
 
@@ -25,7 +27,9 @@ namespace DataAccessLayer.Concrete.Repositories
 
         public void Insert(T p)
         {
-            _object.Add(p);
+            var addedEntity = c.Entry(p);
+            addedEntity.State = EntityState.Added;
+          //  _object.Add(p);
             c.SaveChanges();
         }
 
@@ -41,10 +45,11 @@ namespace DataAccessLayer.Concrete.Repositories
 
         public void Update(T p)
         {
+            var updatedEntity = c.Entry(p);
+            updatedEntity.State = EntityState.Modified;
             c.SaveChanges();
         }
     }
 }
 
 
-//Biliyorum bazıları böyle kanı kaynıyor böyle teoriden kaçan bir tarzda arkadaşlarımız var ama yazılım da hani ben de hiperaktifim ben de yerimde duramam teoriden sevmem böyle sıkılırım falan ama yani yazılım öğreneceksek önce teori... neyin ne olduğunu bileceksin neyi bildiğini ya neyi öğrendiğini bileceksin ya kim bu? niye?niçin kullanıyoruz? Belirli soruları soracan cevaplarını alacaksın ki hani tekniğin bir anlamı olsun.
