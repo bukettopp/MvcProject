@@ -14,21 +14,21 @@ namespace BusinessLayer.Concrete
         IHeadingDal _headingDal;
         public HeadingManager(IHeadingDal headingDal)
         {
-            _headingDal = headingDal;   
+            _headingDal = headingDal;
         }
         public Heading GetByID(int id)
         {
-           return _headingDal.Get(x=>x.HeadingID==id);
+            return _headingDal.Get(x => x.HeadingID == id);
         }
 
         public List<Heading> GetList()
         {
-            return _headingDal.List();
+            return _headingDal.GetAllHeadingsWithCategoryWriters();
         }
 
         public void HeadingAdd(Heading heading)
         {
-           _headingDal.Insert(heading);
+            _headingDal.Insert(heading);
         }
 
         public void HeadingDelete(Heading heading)

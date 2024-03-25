@@ -2,29 +2,31 @@
 @model List<Heading>
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+
 <br />
 <table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Başlık</th>
-        <th>Kategori</th>
-        <th>Yazar Adı</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.HeadingID</td>
-            <td>@item.HeadingName</td>
-          @*   <td>@item.Category.CategoryName</td> *@
-            <td>@(item.Category != null ? item.Category.CategoryName : "N/A")</td>
-      @*       <td>@item.Writer.WriterName</td> *@
-            <td>@(item.Writer != null ? item.Writer.WriterName : "N/A")</td>
-        </tr>
-    }
+	<tr>
+		<th>ID</th>
+		<th>Başlık</th>
+		<th>Kategori</th>
+		<th>Yazar Adı</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.HeadingID</td>
+			<td>@item.HeadingName</td>
+			<td>@item.Category.CategoryName</td>
+			@*  <td>@(item.Category != null ? item.Category.CategoryName : "Null")</td> *@
+			<td>@item.Writer.WriterName</td>
+			@*  <td>@(item.Writer != null ? item.Writer.WriterName : "Null")</td> *@
+		</tr>
+	}
 </table>
+<br />
+<a href="/Heading/AddHeading" class="btn btn-info">Yeni Başlık Girişi</a>
 
