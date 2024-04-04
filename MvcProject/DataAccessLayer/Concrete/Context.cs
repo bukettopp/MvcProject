@@ -25,4 +25,3 @@ namespace DataAccessLayer.Concrete
 
 }
 
-//Nesne dediğimiz yapılanma canlı bir organizma içerisinde birden fazla anlamlı birbirleriyle ilişkisel veriler tutan ve sadece bunları tutmakla yetinmeyen birazda böyle entellektüel bir alışkanlığını yanı olan bu veriler üzerinde işlemler yapıp sonuçlar üretebilen fonksiyonellikler barındıran bir yapılanma/organizmadır.

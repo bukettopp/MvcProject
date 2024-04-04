@@ -2,6 +2,7 @@
 using DataAccessLayer.Concrete.Repositories;
 using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace DataAccessLayer.EntityFramework
 {
@@ -12,5 +13,6 @@ namespace DataAccessLayer.EntityFramework
             return _object.Include(h => h.Writer)
                 .Include(h => h.Category).ToList();
         }
+    
     }
 }
