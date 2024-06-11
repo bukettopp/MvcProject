@@ -127,11 +127,29 @@
 										</i>
 										Düzenle
 									</a>
-									<a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
-										<i class="fas fa-trash">
-										</i>
-										Sil
-									</a>
+									@switch (item.HeadingStatus)
+									{
+										case false:
+											<a class="btn btn-success btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
+
+												<i class="fas fa-trash"></i>
+												Aktif Yap
+
+
+											</a>
+											break;
+										case true:
+											<a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
+
+												<i class="fas fa-trash"></i>
+												Pasif Yap
+
+
+											</a>
+											break;
+									}
+								
+
 								</td>
 							</tr>
 						}
