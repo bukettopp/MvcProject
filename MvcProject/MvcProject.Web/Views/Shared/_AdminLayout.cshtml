@@ -112,7 +112,7 @@
 
 						</li>
 						<li class="nav-item has-treeview">
-							<a href="#" class="nav-link">
+							<a href="/Contact/Index/" class="nav-link">
 								<i class="nav-icon fas fa-edit"></i>
 								<p>
 									İletişim & Mesajlar
@@ -201,6 +201,7 @@
 	<!-- REQUIRED SCRIPTS -->
 	<!-- jQuery -->
 	<script src="~/web/plugins/jquery/jquery.min.js"></script>
+
 	<!-- Bootstrap -->
 	<script src="~/web/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE -->
@@ -209,5 +210,17 @@
 	<script src="~/web/plugins/chart.js/Chart.min.js"></script>
 	<script src="~/web/dist/js/demo.js"></script>
 	<script src="~/web/dist/js/pages/dashboard3.js"></script>
+
+	<!-- Summernote CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+	<!-- Summernote JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+
+	<script>
+		$(function () {
+			//Add text editor
+			$('#compose-textarea').summernote();
+		});
+	</script>
 </body>
 </html>
