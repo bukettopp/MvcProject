@@ -25,7 +25,7 @@ namespace EntityLayer.Concrete
         public string? WriterImage { get; set; }
         //
         [StringLength(200)]
-        public string WriterAbout { get; set; }
+        public string? WriterAbout { get; set; }
         //
 
         [StringLength(200)]
@@ -39,8 +39,8 @@ namespace EntityLayer.Concrete
         public bool Status { get; set; }    
 
 
-        public ICollection<Heading> Headings { get; set;}
-  public ICollection<Content> Contents { get; set; }
+        public ICollection<Heading>? Headings { get; set;}
+  public ICollection<Content>? Contents { get; set; }
 
     }
 }
