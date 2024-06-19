@@ -8,10 +8,10 @@ namespace DataAccessLayer.Concrete.Repositories
     public class CategoryRepository : ICategoryDal
     {
         Context c = new Context();
-        DbSet<Category> _object;
+        DbSet<Category>? _object;
         public void Delete(Category p)
         {
-           _object.Remove(p);
+           _object?.Remove(p);
           c.SaveChanges();
         }
 
@@ -22,7 +22,7 @@ namespace DataAccessLayer.Concrete.Repositories
 
 		public void Insert(Category p)
         {
-           _object.Add(p);
+           _object?.Add(p);
             c.SaveChanges();// executenonquery
         }
 
