@@ -25,7 +25,8 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            @Html.Partial("~/Views/Contact/MessageListMenu.cshtml")
+           @*  @Html.Partial("~/Views/Contact/MessageListMenu.cshtml") *@
+            @await Html.PartialAsync("~/Views/Contact/MessageListMenu.cshtml")
         
             <!-- /.col -->
             <div class="col-md-9">
