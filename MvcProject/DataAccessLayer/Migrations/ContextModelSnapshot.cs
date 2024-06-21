@@ -51,6 +51,31 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Admin", b =>
+                {
+                    b.Property<int>("AdminID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminID"));
+
+                    b.Property<string>("AdminPassword")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("AdminRole")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("AdminUserName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("AdminID");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Category", b =>
                 {
                     b.Property<int>("CategoryID")
@@ -170,6 +195,27 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("WriterID");
 
                     b.ToTable("Headings");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ImageFile", b =>
+                {
+                    b.Property<int>("ImageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageID"));
+
+                    b.Property<string>("ImageName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ImagePath")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("ImageID");
+
+                    b.ToTable("ImageFiles");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Message", b =>

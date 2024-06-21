@@ -4,18 +4,20 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using MvcProject.Web.CustomAttributes;
 
 namespace MvcProject.Web.Controllers
 {
-    public class AdminCategoryController : Controller
+	[CustomAuthorize]
+	public class AdminCategoryController : Controller
     {
         CategoryManager cm = new(new EfCategoryDal());
+        
         public IActionResult Index()
         {
             var categoryvalues = cm.GetList();
             return View(categoryvalues);
         }
-
 
         [HttpGet]
         public ActionResult AddCategory()
