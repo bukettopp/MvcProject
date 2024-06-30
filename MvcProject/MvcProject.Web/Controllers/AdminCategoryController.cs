@@ -8,12 +8,13 @@ using MvcProject.Web.CustomAttributes;
 
 namespace MvcProject.Web.Controllers
 {
-	[CustomAuthorize]
+	
 	public class AdminCategoryController : Controller
     {
         CategoryManager cm = new(new EfCategoryDal());
-        
-        public IActionResult Index()
+
+		[CustomAuthorize(Roles =  "B")]
+		public IActionResult Index()
         {
             var categoryvalues = cm.GetList();
             return View(categoryvalues);

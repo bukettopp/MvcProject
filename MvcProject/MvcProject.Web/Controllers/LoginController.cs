@@ -26,20 +26,21 @@ namespace MvcProject.Web.Controllers
 			{
 				HttpContext.Session.SetString("UserName",adminuserinfo.AdminUserName);
 				#region Authorize
-				//var claims = new List<Claim> 
-				//{
-				//	new Claim(ClaimTypes.Name, adminuserinfo.AdminUserName),
-				//	new Claim("UserSession", adminuserinfo.AdminUserName)
-				//};
+				var claims = new List<Claim>
+				{
+					new Claim(ClaimTypes.Name, adminuserinfo.AdminUserName),
+					new Claim("UserSession", adminuserinfo.AdminUserName),
+					new Claim(ClaimTypes.Role, adminuserinfo.AdminRole)
+				};
 
-				//var claimsIdentity = new ClaimsIdentity(claims, "SessionScheme");
+				var claimsIdentity = new ClaimsIdentity(claims, "SessionScheme");
 
-				//var authProperties = new AuthenticationProperties 
-				//{
-				//	IsPersistent = true,
-				//};
+				var authProperties = new AuthenticationProperties
+				{
+					IsPersistent = true,
+				};
 
-				//await HttpContext.SignInAsync("SessionScheme", new ClaimsPrincipal(claimsIdentity), authProperties); 
+				await HttpContext.SignInAsync("SessionScheme", new ClaimsPrincipal(claimsIdentity), authProperties);
 				#endregion
 				return RedirectToAction("Index","AdminCategory");
 			}

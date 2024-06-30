@@ -37,31 +37,32 @@ builder.Services.AddSession(options =>
 });
 
 #region Role
-//builder.Services.AddAuthorization(options =>
-//{
-//	options.AddPolicy("WriterPolicy", policy =>
-//	policy.RequireRole("Writer"));
-//	options.AddPolicy("AdminPolicy", policy =>
-//	policy.RequireRole("Admin"));
-//}); 
+builder.Services.AddAuthorization(options =>
+{
+	options.AddPolicy("WriterPolicy", policy =>
+	policy.RequireRole("Writer"));
+	options.AddPolicy("AdminPolicy", policy =>
+	policy.RequireRole("Admin"));
+});
 #endregion
 
 #region Authorize
-//builder.Services.AddAuthentication("SessionScheme")
-//	.AddCookie("SessionScheme", options => 
-//	{
-//		options.Cookie.Name = "AuthenticatonMvc";
-//		options.LoginPath = "/Login/Index";
-//		options.AccessDeniedPath = "/AdminCategory/Index";
-//	});
+builder.Services.AddAuthentication("SessionScheme")
+	.AddCookie("SessionScheme", options =>
+	{
+		options.Cookie.Name = "AuthenticatonMvc";
+		options.LoginPath = "/Login/Index";
+	//	options.AccessDeniedPath = "/AdminCategory/Index";
+		options.AccessDeniedPath = "/Login/Index";
+	});
 
-//builder.Services.AddAuthorization(options =>
-//{
-//	options.AddPolicy("SessionPolicy", policy =>
-//	{
-//		policy.RequireClaim("UserSession");
-//	});
-//}); 
+builder.Services.AddAuthorization(options =>
+{
+	options.AddPolicy("SessionPolicy", policy =>
+	{
+		policy.RequireClaim("UserSession");
+	});
+});
 #endregion
 
 var app = builder.Build();
