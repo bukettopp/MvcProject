@@ -26,7 +26,13 @@ namespace BusinessLayer.Concrete
             return _headingDal.GetAllHeadingsWithCategoryWriters();
         }
 
-        public void HeadingAdd(Heading heading)
+		public List<Heading> GetListByWriter()
+		{
+            //  return _headingDal.List(X => X.WriterID == 4 );
+            return _headingDal.GetAllHeadingsOfWriters(4);
+		}
+
+		public void HeadingAdd(Heading heading)
         {
             _headingDal.Insert(heading);
         }
@@ -41,5 +47,6 @@ namespace BusinessLayer.Concrete
         {
             _headingDal.Update(heading);
         }
+        
     }
 }

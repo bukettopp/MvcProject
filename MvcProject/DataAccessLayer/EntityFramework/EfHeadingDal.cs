@@ -13,6 +13,12 @@ namespace DataAccessLayer.EntityFramework
             return _object.Include(h => h.Writer)
                 .Include(h => h.Category).ToList();
         }
-    
-    }
+		public List<Heading> GetAllHeadingsOfWriters(int id)
+		{
+			return _object.Include(h => h.Category).
+				Include(h => h.Writer).
+				Where(h => h.WriterID == id).ToList();
+		}
+
+	}
 }

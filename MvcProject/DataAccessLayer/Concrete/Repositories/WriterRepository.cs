@@ -24,6 +24,11 @@ namespace DataAccessLayer.Concrete.Repositories
 			throw new NotImplementedException();
 		}
 
+		public List<Writer> GetHeadingsWithCategory()
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Insert(Writer p)
         {
             throw new NotImplementedException();

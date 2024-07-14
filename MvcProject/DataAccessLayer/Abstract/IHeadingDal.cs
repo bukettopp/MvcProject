@@ -11,5 +11,7 @@ namespace DataAccessLayer.Abstract
     public interface IHeadingDal : IRepository<Heading>
     {
         List<Heading> GetAllHeadingsWithCategoryWriters();
-    }
+        List<Heading> GetAllHeadingsOfWriters(int id);
+
+	}
 }
