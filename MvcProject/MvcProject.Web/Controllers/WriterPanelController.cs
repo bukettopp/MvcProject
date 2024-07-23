@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,7 @@ namespace MvcProject.Web.Controllers
 
 												  }
 			 ).ToList();
+			ViewBag.vlc = valuecategory;
 			return View();
 		}
 		[HttpPost]
@@ -41,8 +43,52 @@ namespace MvcProject.Web.Controllers
 			p.WriterID = 4;
 			p.HeadingStatus = true;
 			hm.HeadingAdd(p);
-			return RedirectToAction("Index");
+			return RedirectToAction("MyHeading");
 			
 		}
-	}
+
+		[HttpGet]
+		public ActionResult EditHeading(int id)
+		{
+			List<SelectListItem> valuecategory = (from x in cm.GetList()
+												  select new SelectListItem
+												  {
+													  Text = x.CategoryName,
+													  Value = x.CategoryID.ToString()
+
+												  }
+			).ToList();
+			ViewBag.vlc = valuecategory;
+			var headingvalues = hm.GetByID(id);
+			return View(headingvalues);
+		}
+      
+        [HttpPost]
+        public ActionResult EditHeading(Heading heading)
+        {
+            // Mevcut veriyi veritabanından al
+            var existingHeading = hm.GetByID(heading.HeadingID);
+			
+
+            if (existingHeading != null)
+            {
+               
+                existingHeading.HeadingName = heading.HeadingName;
+                existingHeading.CategoryID = heading.CategoryID;
+
+                hm.HeadingUpdate(existingHeading);
+            }
+
+            return RedirectToAction("MyHeading");
+        }
+
+        public ActionResult DeleteHeading(int id)
+        {
+            var heading = hm.GetByID(id);
+
+            heading.HeadingStatus = false;
+            hm.HeadingDelete(heading);
+            return RedirectToAction("MyHeading");
+        }
+    }
 }
